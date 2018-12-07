@@ -24,7 +24,7 @@ let newFile = (base, limite = 10) => {
             }
 
             // const data = new Uint8Array(Buffer.from('Hello Node.js'));
-            fs.writeFile(`./files/tabla-${base}.txt`, data, (err) => {
+            fs.writeFile(`./01-console-multiplicar-app/files/tabla-${base}.txt`, data, (err) => {
                 if (err) reject(err)
                 else resolve(`tabla-${base}.txt`.rainbow)
             });
