@@ -172,6 +172,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # PROJECT FILES
-files/*.txt
+01-console-multiplicar-app/files/*.txt
 
 # End of https://www.gitignore.io/api/node,video,adobe,audio,macos,windows
