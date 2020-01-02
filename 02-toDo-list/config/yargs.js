@@ -6,7 +6,7 @@ const argv = require("yargs")
 			desc: "Nueva tarea por hacer"
 		},
 		status: {
-			default: false,
+			default: "false",
 			desc: "Estado por default de la nueva tarea"
 		}
 	})
@@ -23,7 +23,7 @@ const argv = require("yargs")
 			desc: "Lista todos los toDo's"
 		},
 		status: {
-			default: false
+			default: "false"
 		}
 	})
 	.command("update", "actualizar un ToDo item segun su ID", {
