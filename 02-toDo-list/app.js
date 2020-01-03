@@ -26,7 +26,7 @@ switch (comando) {
 		break;
 
 	case "delete":
-		del({ title: "foo" });
+		del();
 		break;
 
 	case "update":

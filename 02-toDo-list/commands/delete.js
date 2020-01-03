@@ -1,69 +1,54 @@
 const prompts = require("prompts");
 const getDB = require("./list");
 
-/* (async () => {
-	const response = await prompts({
-		type: "number",
-		name: "value",
-		message: "How old are you?",
-		validate: value => (value < 18 ? `Nightclub is 18+ only` : true)
-	});
-
-	console.log(response); // => { value: 24 }
-})(); */
-
-const questions = [
-	{
-		type: "text",
-		name: "username",
-		message: "What is your GitHub username?"
-	},
-	{
-		type: "number",
-		name: "age",
-		message: "How old are you?"
-	},
-	{
-		type: "text",
-		name: "about",
-		message: "Tell something about yourself",
-		initial: "Why should I?"
-	},
-	{
-		type: "select",
-		name: "color",
-		message: "Pick a color",
-		choices: [
-			{
-				title: "Red",
-				description: "This option has a description",
-				value: "#ff0000"
-			},
-			{ title: "Green", value: "#00ff00", disabled: true },
-			{ title: "Blue", value: "#0000ff" }
-		],
-		initial: 1
-	},
-	{
-		type: "autocomplete",
-		name: "actor",
-		message: "Pick your favorite actor",
-		choices: [
-			{ title: "Cage" },
-			{ title: "Clooney", value: "silver-fox" },
-			{ title: "Gyllenhaal" },
-			{ title: "Gibson" },
-			{ title: "Grant" }
-		]
-	}
-];
-
 /**
  *
  */
-module.exports = async data => {
-	console.log("delete toDo");
+async function getToDosForDelete() {
 	const info = getDB();
-	const foo = await prompts(questions);
-	console.log("TCL: foo -> foo", foo, info, data);
+	let questions = [
+		{
+			type: "autocomplete",
+			name: "toDoID",
+			message: 'Pick the "to Do" do you want delete:',
+			choices: []
+		},
+		{
+			type: "toggle",
+			name: "confirm",
+			message: "Can you confirm?",
+			initial: true,
+			active: "yes",
+			inactive: "no"
+		}
+	];
+	if (info.length > 0) {
+		questions[0].choices = info.reduce((ac, c) => {
+			ac.push({ title: c.description, value: c.id });
+			return ac;
+		}, []);
+		return questions;
+	} else {
+		return false;
+	}
+}
+async function selectToDoOf(list) {
+	const baz = await prompts(list);
+	return baz;
+}
+function deleteToDoBy(params) {
+	if (params.confirm) {
+		console.log("TCL: params", params);
+	} else {
+		console.log("Canceled delete:", params.toDoID);
+	}
+}
+module.exports = async () => {
+	const toDoList = await getToDosForDelete();
+	if (toDoList) {
+		const promptResult = await selectToDoOf(toDoList);
+		deleteToDoBy(promptResult);
+	} else {
+		console.log('There is no "to do" in the list.');
+	}
 };
