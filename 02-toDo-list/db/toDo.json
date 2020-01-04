@@ -1,7 +1,1 @@
-[
-	{ "id": 0, "description": "ToDo default", "status": "false" },
-	{ "id": 1, "description": "comer patacon", "status": "false" },
-	{ "id": 2, "description": "terminar clase de todo", "status": "false" },
-	{ "id": 3, "description": "mejorar  todo", "status": "false" },
-	{ "id": 3, "description": "refactor comandos", "status": "false" }
-]
+[]
