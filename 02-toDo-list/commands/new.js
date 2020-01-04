@@ -1,12 +1,9 @@
-const fs = require("fs");
-const getDB = require("./list");
+const writeDB = require("./writeDB");
 
 module.exports = data => {
 	console.log("new toDo");
-	const currentDB = getDB();
+	const currentDB = $.db;
 	currentDB.push(data);
-	fs.writeFile("./db/toDo.json", JSON.stringify(currentDB), err => {
-		if (err) throw err;
-		return { status: "success" };
-	});
+	writeDB("./db/toDo.json", currentDB);
+	return { status: "success" };
 };
