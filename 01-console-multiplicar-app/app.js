@@ -17,7 +17,7 @@ switch (comando) {
 		break;
 
 	case "crear":
-		multiply(argv.base).then(res =>
+		multiply(argv.base, argv.limit).then(res =>
 			newFile(res)
 				.then(file => console.log(file))
 				.catch(err => console.error(err))
