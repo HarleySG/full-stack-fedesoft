@@ -1,16 +1,16 @@
 const prompts = require("prompts");
-const getDB = require("./list");
+const writeDB = require("./writeDB");
 
 /**
  *
  */
-async function getToDosForDelete() {
-	const info = getDB();
+async function getToDosForConsult(messageConsole) {
+	const toDoDB = $.db;
 	let questions = [
 		{
 			type: "autocomplete",
 			name: "toDoID",
-			message: 'Pick the "to Do" do you want delete:',
+			message: messageConsole,
 			choices: []
 		},
 		{
@@ -22,8 +22,8 @@ async function getToDosForDelete() {
 			inactive: "no"
 		}
 	];
-	if (info.length > 0) {
-		questions[0].choices = info.reduce((ac, c) => {
+	if (toDoDB.length > 0) {
+		questions[0].choices = toDoDB.reduce((ac, c) => {
 			ac.push({ title: c.description, value: c.id });
 			return ac;
 		}, []);
@@ -37,14 +37,28 @@ async function selectToDoOf(list) {
 	return baz;
 }
 function deleteToDoBy(params) {
-	if (params.confirm) {
-		console.log("TCL: params", params);
+	const toDoDB = $.db;
+	const { toDoID, confirm } = params;
+	if (confirm) {
+		const newTodoList = toDoDB.filter(todo => {
+			if (todo.id != toDoID) {
+				return todo;
+			}
+		});
+		writeDB("./db/toDo.json", newTodoList);
 	} else {
-		console.log("Canceled delete:", params.toDoID);
+		toDoDB.filter(todo => {
+			if (todo.id == toDoID) {
+				console.log("Canceled delete toDo:", todo.description);
+				return todo.description;
+			}
+		});
 	}
 }
 module.exports = async () => {
-	const toDoList = await getToDosForDelete();
+	const toDoList = await getToDosForConsult(
+		'Pick the "to Do" do you want delete:'
+	);
 	if (toDoList) {
 		const promptResult = await selectToDoOf(toDoList);
 		deleteToDoBy(promptResult);
