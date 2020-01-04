@@ -12,7 +12,6 @@ const argv = require("yargs")
 	})
 	.command("delete", "Elimina un toDo item segun su ID", {
 		description: {
-			demand: true,
 			alias: "d",
 			desc: "Identificador del toDO a eliminar"
 		}
@@ -27,17 +26,9 @@ const argv = require("yargs")
 		}
 	})
 	.command("update", "actualizar un ToDo item segun su ID", {
-		todoID: {
-			demand: true,
-			alias: "i"
-		},
-		description: {
-			demand: true,
-			alias: "d"
-		},
-		state: {
-			default: true,
-			alias: "s"
+		update: {
+			alias: "u",
+			desc: "Actualizar status del toDo"
 		}
 	})
 	.help().argv;

@@ -1,28 +1,29 @@
 const { green } = require("colors");
 const argv = require("./config/yargs").argv;
-const { del, add, getDB } = require("./commands");
+const { del, add, update } = require("./commands");
 
 let comando = argv._[0];
+global.$ = {
+	db: require("./db/toDo.json")
+};
 
 switch (comando) {
 	case "new":
 		add({
-			id: 3,
+			id: Date.now(),
 			description: argv.description,
 			status: argv.status
 		});
 		break;
 
 	case "list":
-		const dbList = getDB();
+		const dbList = $.db;
 		for (const toDO of dbList) {
 			console.log("============ToDo==========".green);
 			console.log(toDO.description);
 			console.log("status", toDO.status);
 			console.log("==========================".green);
 		}
-		console.log("TCL: db", dbList);
-		console.log("list toDo");
 		break;
 
 	case "delete":
@@ -30,7 +31,7 @@ switch (comando) {
 		break;
 
 	case "update":
-		console.log("update toDo");
+		update();
 		break;
 
 	default:
