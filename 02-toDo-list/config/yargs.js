@@ -17,12 +17,14 @@ const argv = require("yargs")
 		}
 	})
 	.command("list", "Mostrar todos los toDo", {
-		list: {
+		todoList: {
 			alias: "l",
 			desc: "Lista todos los toDo's"
 		},
 		status: {
-			default: "false"
+			default: "default",
+			alias: "s",
+			desc: "Estado por default de la nueva tarea"
 		}
 	})
 	.command("update", "actualizar un ToDo item segun su ID", {
