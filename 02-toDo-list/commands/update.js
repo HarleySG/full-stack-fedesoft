@@ -2,7 +2,7 @@ const prompts = require("prompts");
 const writeDB = require("./writeDB");
 
 async function getToDosForConsult(messageConsole) {
-	const toDoDB = $.db;
+	const ToDoDB = $.getToDoDB();
 	let questions = [
 		{
 			type: "autocomplete",
@@ -32,8 +32,8 @@ async function getToDosForConsult(messageConsole) {
 			inactive: "no"
 		}
 	];
-	if (toDoDB.length > 0) {
-		questions[0].choices = toDoDB.reduce((ac, c) => {
+	if (ToDoDB.length > 0) {
+		questions[0].choices = ToDoDB.reduce((ac, c) => {
 			ac.push({ title: c.description, value: c.id });
 			return ac;
 		}, []);
@@ -47,10 +47,10 @@ async function selectToDoOf(list) {
 	return baz;
 }
 function updateToDoBy(params) {
-	const toDoDB = $.db;
+	const ToDoDB = $.getToDoDB();
 	const { toDoID, confirm, status } = params;
 	if (confirm) {
-		const newTodoList = toDoDB.map(todo => {
+		const newTodoList = ToDoDB.map(todo => {
 			if (todo.id == toDoID) {
 				todo.status = status;
 				return todo;
@@ -59,7 +59,7 @@ function updateToDoBy(params) {
 		});
 		writeDB("./db/toDo.json", newTodoList);
 	} else {
-		toDoDB.filter(todo => {
+		ToDoDB.filter(todo => {
 			if (todo.id == toDoID) {
 				console.log("canceled: update toDo:", todo.description);
 				return todo.description;

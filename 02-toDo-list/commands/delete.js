@@ -5,7 +5,7 @@ const writeDB = require("./writeDB");
  *
  */
 async function getToDosForConsult(messageConsole) {
-	const toDoDB = $.db;
+	const ToDoDB = $.getToDoDB();
 	let questions = [
 		{
 			type: "autocomplete",
@@ -22,8 +22,8 @@ async function getToDosForConsult(messageConsole) {
 			inactive: "no"
 		}
 	];
-	if (toDoDB.length > 0) {
-		questions[0].choices = toDoDB.reduce((ac, c) => {
+	if (ToDoDB.length > 0) {
+		questions[0].choices = ToDoDB.reduce((ac, c) => {
 			ac.push({ title: c.description, value: c.id });
 			return ac;
 		}, []);
@@ -37,17 +37,17 @@ async function selectToDoOf(list) {
 	return baz;
 }
 function deleteToDoBy(params) {
-	const toDoDB = $.db;
+	const ToDoDB = $.getToDoDB();
 	const { toDoID, confirm } = params;
 	if (confirm) {
-		const newTodoList = toDoDB.filter(todo => {
+		const newTodoList = ToDoDB.filter(todo => {
 			if (todo.id != toDoID) {
 				return todo;
 			}
 		});
 		writeDB("./db/toDo.json", newTodoList);
 	} else {
-		toDoDB.filter(todo => {
+		ToDoDB.filter(todo => {
 			if (todo.id == toDoID) {
 				console.log("Canceled delete toDo:", todo.description);
 				return todo.description;
