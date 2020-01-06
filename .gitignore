@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/node,video,adobe,audio,macos,windows
-# Edit at https://www.gitignore.io/?templates=node,video,adobe,audio,macos,windows
+# Created by https://www.gitignore.io/api/node,video,adobe,audio,macos,windows,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=node,video,adobe,audio,macos,windows,visualstudiocode
 
 ### Adobe ###
 # Adobe Source Files
@@ -174,4 +174,16 @@ $RECYCLE.BIN/
 # PROJECT FILES
 01-console-multiplicar-app/files/*.txt
 
-# End of https://www.gitignore.io/api/node,video,adobe,audio,macos,windows
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/node,video,adobe,audio,macos,windows,visualstudiocode
