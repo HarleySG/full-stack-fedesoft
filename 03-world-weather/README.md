@@ -17,3 +17,8 @@ npm i
 ```js
 node index city -n barranquilla
 ```
+
+# TODO
+
+<!-- prettier-ignore -->
+- [ ] Usar libreria prompts para filtrar el país
