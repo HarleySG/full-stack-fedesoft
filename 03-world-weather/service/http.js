@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-async function axiosQueryBy(options) {
+async function query(options) {
 	try {
 		const res = await axios(options);
 		return res;
@@ -28,5 +28,5 @@ function axiosCathError(error) {
 }
 
 module.exports = {
-	queryBy: axiosQueryBy
+	query
 };
