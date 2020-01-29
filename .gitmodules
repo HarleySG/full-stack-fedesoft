@@ -1,0 +1,3 @@
+[submodule "01-console-multiply-app"]
+	path = 01-console-multiply-app
+	url = git@github.com:HarleySG/udemy-nodeJs-multiply-app.git
