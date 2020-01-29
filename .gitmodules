@@ -1,3 +1,6 @@
 [submodule "01-console-multiply-app"]
 	path = 01-console-multiply-app
 	url = git@github.com:HarleySG/udemy-nodeJs-multiply-app.git
+[submodule "02-console-todo-list"]
+	path = 02-console-todo-list
+	url = git@github.com:HarleySG/udemy-nodejs-console-todo-list.git
