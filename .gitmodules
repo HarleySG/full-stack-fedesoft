@@ -4,3 +4,6 @@
 [submodule "02-console-todo-list"]
 	path = 02-console-todo-list
 	url = git@github.com:HarleySG/udemy-nodejs-console-todo-list.git
+[submodule "03-console-world-weather"]
+	path = 03-console-world-weather
+	url = git@github.com:HarleySG/udemy-nodejs-world-weather.git
