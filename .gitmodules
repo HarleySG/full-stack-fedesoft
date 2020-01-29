@@ -7,3 +7,6 @@
 [submodule "03-console-world-weather"]
 	path = 03-console-world-weather
 	url = git@github.com:HarleySG/udemy-nodejs-world-weather.git
+[submodule "04-webserver-express"]
+	path = 04-webserver-express
+	url = git@github.com:HarleySG/udemy-nodejs-webserver-express.git
