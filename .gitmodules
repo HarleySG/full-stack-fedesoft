@@ -10,3 +10,6 @@
 [submodule "04-webserver-express"]
 	path = 04-webserver-express
 	url = git@github.com:HarleySG/udemy-nodejs-webserver-express.git
+[submodule "05-rest-server"]
+	path = 05-rest-server
+	url = git@github.com:HarleySG/udemy-nodeJs-rest-server.git
