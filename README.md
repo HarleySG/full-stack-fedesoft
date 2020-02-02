@@ -7,6 +7,14 @@ Cada clase tiene su propio repositorio y están vinculados a este repositorio us
 
 > El código de cada clase no es el mismo que se realizo con la guia de Fernando Herrera, es mi versión. Se cumple con el objetivo planteado en clase pero la implementación de cada código tiene características propias a mi estilo de programar en el momento que las realice.
 
+## git submodule
+
+> Para actualizar todos los submodulos usar:
+
+```
+git submodule update --recursive --remote --merge
+```
+
 ## Multiply app
 
 :dart: Bases de nodeJs: uso de terminal, capturar argumentos, crear archivo
